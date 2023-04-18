@@ -7,6 +7,8 @@ package gui_railway_project;
 
 import java.util.Scanner;
 import gui_railway_project.Locomotive;
+import gui_railway_project.Station;
+import gui_railway_project.Connection;
 import gui_railway_project.RailroadCars.*;
 import gui_railway_project.Trainset;
 import java.util.ArrayList;
@@ -17,8 +19,13 @@ public class Main {
         int choice;
         // later we need to select trainset inorder to attach cars
         Trainset selectedTrain = null;
-        // we need to select a car to attach it to a trainset
+        // select a car to attach it to a trainset
         RailroadCar selectedCar = null;
+        // select a station to connect
+        Station selectedstartStation = null;
+        // select a station to connect
+        Station selectedendStation = null;
+        
         
         Locomotive locomotive = null;
         RailroadCar railroadCar = null;
@@ -29,6 +36,10 @@ public class Main {
         ArrayList<Locomotive> locomotives = new ArrayList<>();
         // store created railroadcars
         ArrayList<RailroadCar> railroadcars = new ArrayList<>();
+        // available stations list
+        ArrayList<Station> stations = new ArrayList<>();
+        // available connections list
+        ArrayList<Connection> connections = new ArrayList<>();
         
         do {
             System.out.println("\nSelect an option:");
@@ -43,7 +54,9 @@ public class Main {
                 case 1:
                     System.out.println("\nSelect an object to create:");
                     System.out.println("1. Trainset&Loco");
-                    System.out.println("2. Railroad Car");                    
+                    System.out.println("2. Railroad Car"); 
+                    System.out.println("3. Station"); 
+                    System.out.println("4. Connection"); 
                     System.out.println("0. GoBack");
                     int objectChoice = scanner.nextInt();
                     scanner.nextLine(); // clear the buffer
@@ -117,14 +130,63 @@ public class Main {
                                     break;                                  
                             }
                             break;
+                                                  
+                        
                         case 3:
-                            System.out.println("=== List A CAR ===");
+                                                       
+                            System.out.println("Enter the station name:");
+                            String stationName = scanner.nextLine();
+                            System.out.println("Enter the latitude value or X-coordinate:");
+                            double lat = scanner.nextDouble();
+                            scanner.nextLine();
+                            System.out.println("Enter the longitude value or Y-coordinate:");
+                            double lon = scanner.nextDouble();
                             
-                            for (RailroadCar car : railroadcars) {
+                            Station station = new Station(stationName,lat,lon);
+                            stations.add(station);
+                            break;
+                            
+                            
+                        case 4:
+                            
+                            System.out.println("=== Here are a list of available stations ===");
+                            
+                            for (Station eachstation : stations) {
                                 
-                                System.out.println(car.getUniqueNum());
+                                System.out.println(eachstation.getName());
                                 
                             }
+                            System.out.println("Enter the start station name:");
+                            String start = scanner.nextLine();
+                            for (Station eachstation : stations) {
+                                
+                                if (eachstation.getName().equals(start)){
+                                    
+                                    selectedstartStation = eachstation;
+                                    
+                                };
+                                
+                            }
+                            
+                            System.out.println("Enter the end station name:");
+                            String end = scanner.nextLine();
+                            for (Station eachstation : stations) {
+                                
+                                if (eachstation.getName().equals(end)){
+                                    
+                                    selectedendStation = eachstation;
+                                    
+                                };
+                                
+                            }
+                            System.out.println("Enter the name/code for the connection:");
+                            String connectionCode = scanner.nextLine();
+                            
+                            Connection conn = new Connection(connectionCode,selectedstartStation,selectedendStation);
+                            connections.add(conn);
+                            System.out.println(connections.get(0).getconnectionCode());
+                            
+                            break;                         
                             
                             
                         
