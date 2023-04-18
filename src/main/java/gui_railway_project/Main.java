@@ -12,6 +12,8 @@ import gui_railway_project.Connection;
 import gui_railway_project.RailroadCars.*;
 import gui_railway_project.Trainset;
 import java.util.ArrayList;
+import java.util.List;
+import gui_railway_project.functions.RailwayNetwork;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,6 +42,8 @@ public class Main {
         ArrayList<Station> stations = new ArrayList<>();
         // available connections list
         ArrayList<Connection> connections = new ArrayList<>();
+        // list of segments for trainsegment thread initialization
+        List<Connection> segments = new ArrayList<>();
         
         do {
             System.out.println("\nSelect an option:");
@@ -47,7 +51,8 @@ public class Main {
             System.out.println("2. List car ");
             System.out.println("3. List train ");
             System.out.println("4. attach car ");
-            System.out.println("5. Quit");
+            System.out.println("5. Route Management ");
+            System.out.println("6. Quit");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -241,13 +246,151 @@ public class Main {
                     break;
                     
                 case 5:
+                    System.out.println("\nSelect an object to create:");
+                    System.out.println("1. Create Railwaynetwork");
+                    System.out.println("2. Set/find route"); 
+                    System.out.println("3. Station"); 
+                    System.out.println("4. Connection"); 
+                    System.out.println("0. GoBack");
+                    int choiceRoute = scanner.nextInt();
+                    scanner.nextLine(); // clear the buffer
+                    
+                    if (choiceRoute == 0) {
+                        continue; // go back to the previous loop iteration
+                    }
+
+
+                    switch (choiceRoute) {
+                        case 1:
+                            
+                            
+                            RailwayNetwork railwaynet = new RailwayNetwork();  
+                            for (Station eachstation : stations) {
+                                
+                                railwaynet.addStation(eachstation);
+                                
+                            }
+                            for (Connection conn : connections) {
+                                
+                                railwaynet.addConnection(conn);
+                                
+                            }
+                            
+                            segments.add(connections.get(0));
+                            segments.add(connections.get(1));
+                            segments.add(connections.get(2)); 
+                            
+                            
+                            System.out.println("Please enter start station:");
+                            String startStation = scanner.nextLine();
+                            if (!railwaynet.hasStation(startStation)) {
+                                System.out.println("Start station does not exist in network.");
+                                continue;
+                            }
+
+                            System.out.println("Please enter end station:");
+                            String endStation = scanner.nextLine();
+                            if (!railwaynet.hasStation(endStation)) {
+                                System.out.println("End station does not exist in network.");
+                                    continue;
+                            }
+
+                            // Find route and display to user
+                            List<String> route = railwaynet.findRoute(startStation, endStation);
+                            if (route == null) {
+                                System.out.println("No route found.");
+                            } else {
+                                System.out.println("Route:");
+                                for (String station : route) {
+                                    System.out.println(station);
+                                }
+                            }
+                            
+                            break;
+                            
+                        case 2: 
+                            
+                            RailwayNetwork railwaynetw = new RailwayNetwork(); 
+                            
+                            Station stationpoz = new Station("poznan",0, 0);
+                            Station stationwar = new Station("warsaw",0, 10);
+                            Station stationkra = new Station("krakow",10, 10);
+                            Station stationgdansk = new Station("gdansk",10, 0);
+                            Station stationkato = new Station("katowice",5, 5);
+
+                            Connection connectionPW = new Connection("poz-war",stationpoz, stationwar);
+                            Connection connectionWK = new Connection("WK",stationwar, stationkra);
+                            Connection connectionKK = new Connection("KK",stationkra, stationkato);
+                            Connection connectionKP = new Connection("KP",stationkato, stationpoz);
+                            Connection connectionWP = new Connection("WP",stationwar, stationpoz);
+                            Connection connectionKG = new Connection("KG",stationkra, stationgdansk);
+                            Connection connectionWKA = new Connection("WKA",stationwar, stationkato);
+                            Connection connectionGP = new Connection("GP",stationgdansk, stationpoz);
+
+                            railwaynetw.addStation(stationpoz);
+                            railwaynetw.addStation(stationwar);
+                            railwaynetw.addStation(stationkra);
+                            railwaynetw.addStation(stationgdansk);
+                            railwaynetw.addStation(stationkato);
+
+                            railwaynetw.addConnection(connectionPW);
+                            railwaynetw.addConnection(connectionWK);
+                            railwaynetw.addConnection(connectionKK);
+                            railwaynetw.addConnection(connectionWP);
+                            railwaynetw.addConnection(connectionKG);
+                            railwaynetw.addConnection(connectionWKA);
+                            railwaynetw.addConnection(connectionGP);
+                            railwaynetw.addConnection(connectionKP);
+                            
+                            segments.add(connectionPW);
+                            segments.add(connectionWK);
+                            segments.add(connectionKP); 
+                            
+                            
+                            System.out.println("Please enter start station:");
+                            String startStation1 = scanner.nextLine();
+                            if (!railwaynetw.hasStation(startStation1)) {
+                                System.out.println("Start station does not exist in network.");
+                                continue;
+                            }
+
+                            System.out.println("Please enter end station:");
+                            String endStation1 = scanner.nextLine();
+                            if (!railwaynetw.hasStation(endStation1)) {
+                                System.out.println("End station does not exist in network.");
+                                    continue;
+                            }
+
+                            // Find route and display to user
+                            List<String> route1 = railwaynetw.findRoute(startStation1, endStation1);
+                            if (route1 == null) {
+                                System.out.println("No route found.");
+                            } else {
+                                System.out.println("Route:");
+                                for (String station : route1) {
+                                    System.out.println(station);
+                                }
+                            }
+                            
+                            break;
+                        
+                        
+                        default:
+                            System.out.println("\nInvalid choice");
+                            break;
+                    }
+                    break;
+                
+                    
+                    
+                case 6:
                     System.out.println("\nGoodbye!");
                     return;
                 default:
                     System.out.println("\nInvalid choice");
                     break;
             }
-        } while (choice != 5);
+        } while (choice != 6);
     }
 }
 

@@ -9,36 +9,43 @@ package gui_railway_project.functions;
  * @author Hp
  */
 import java.util.*;
+import gui_railway_project.Station;
+import gui_railway_project.Connection;
 
 public class RailwayNetwork {
-    private Map<String, List<Connection>> adjacencyList;
+       private Map<String, List<Connection>> adjacencyList;
     private Map<String, Object> locks;
 
     public RailwayNetwork() {
         this.adjacencyList = new HashMap<>();
         this.locks = new HashMap<>();
     }
+    
+    public boolean hasStation(String stationName) {
+        return adjacencyList.containsKey(stationName);
+    }
 
-    public void addStation(String station) {
-        if (!adjacencyList.containsKey(station)) {
-            adjacencyList.put(station, new ArrayList<>());
+
+    public void addStation(Station station) {
+        if (!adjacencyList.containsKey(station.getName())) {
+            adjacencyList.put(station.getName(), new ArrayList<>());
         }
     }
 
     public void addConnection(Connection connection) {
-        String station1 = connection.getStartStationName();
-        String station2 = connection.getEndStationName();
+        Station station1 = connection.getStartStation();
+        Station station2 = connection.getEndStation();
         addStation(station1);
         addStation(station2);
-        adjacencyList.get(station1).add(connection);
-        adjacencyList.get(station2).add(connection);
-        String track = getTrack(station1, station2);
+        adjacencyList.get(station1.getName()).add(connection);
+        adjacencyList.get(station2.getName()).add(connection);
+        String track = getTrack(station1.getName(), station2.getName());
         if (!locks.containsKey(track)) {
             locks.put(track, new Object());
         }
     }
 
-    public Pair<List<String>, Double> findRoute(String startStation, String endStation) {
+    public List<String> findRoute(String startStation, String endStation) {
         Map<String, String> visited = new HashMap<>();
         Map<String, Double> distances = new HashMap<>();
         Stack<String> stack = new Stack<>();
@@ -52,11 +59,11 @@ public class RailwayNetwork {
             if (current.equals(endStation)) {
                 List<String> route = reconstructPath(visited, endStation);
                 double distance = calculateDistance(route);
-                return new Pair<>(route, distance);
+                return route;
             }
 
             for (Connection connection : adjacencyList.get(current)) {
-                String neighbor = connection.getStartStationName().equals(current) ? connection.getEndStationName() : connection.getStartStationName();
+                String neighbor = connection.getStartStation().getName().equals(current) ? connection.getEndStation().getName() : connection.getStartStation().getName();
                 double distanceToNeighbor = distances.get(current) + connection.getDistance();
                 if (!visited.containsKey(neighbor) || distanceToNeighbor < distances.get(neighbor)) {
                     visited.put(neighbor, current);
@@ -86,14 +93,17 @@ public class RailwayNetwork {
             String station1 = route.get(i);
             String station2 = route.get(i + 1);
             Connection connection = findConnection(station1, station2);
-            distance += connection.getDistance();
-        }
-        return distance;
+            if (connection != null) {
+                distance += connection.getDistance();
+            }
     }
+    return distance;
+}
+
 
     private Connection findConnection(String station1, String station2) {
         for (Connection connection : adjacencyList.get(station1)) {
-            if (connection.getStartStationName().equals(station2) || connection.getEndStationName().equals(station2)) {
+            if (connection.getStartStation().equals(station2) || connection.getEndStation().equals(station2)) {
                 return connection;
             }
         }
