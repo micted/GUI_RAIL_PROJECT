@@ -32,8 +32,9 @@ public class TrainSegment implements Runnable {
     private double currentSpeed;
     private double currentDistanceCovered;
     private double totalDistanceCovered;
+    private double routeDistance;
 
-    public TrainSegment(Trainset trainset, List<Connection> segments, RailwayNetwork railwayNetwork) {
+    public TrainSegment(Trainset trainset, List<Connection> segments, RailwayNetwork railwayNetwork,double routeDistance) {
         this.trainset = trainset;
         this.segments = segments;
         this.railwayNetwork = railwayNetwork;
@@ -61,6 +62,7 @@ public class TrainSegment implements Runnable {
 
                 // Calculate the distance remaining on the current segment
                 double distanceRemaining = currentSegment.getDistance() - currentDistanceCovered;
+                System.out.println("remaining distance till next segment"+distanceRemaining);
 
                 // Calculate the time required to cover the remaining distance
                 double timeRequired = distanceRemaining / currentSpeed;
@@ -71,6 +73,8 @@ public class TrainSegment implements Runnable {
                 // Calculate the new distance covered and update the total distance covered
                 currentDistanceCovered = currentSegment.getDistance();
                 totalDistanceCovered += currentDistanceCovered;
+                
+                System.out.println(totalDistanceCovered);
 
                 // Check if the train has arrived at a station
                 if (currentSegment.hasStation()) {

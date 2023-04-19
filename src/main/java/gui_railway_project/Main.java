@@ -375,7 +375,7 @@ public class Main {
                             }
                             
                             
-                            TrainSegment trainSegment = new TrainSegment(trainsets.get(0), segments, railwaynetw);
+                            TrainSegment trainSegment = new TrainSegment(trainsets.get(0), segments, railwaynetw,railwaynetw.calculateDistance(route1));
                               
 
                             // Start train segment in a new thread
