@@ -14,6 +14,7 @@ import gui_railway_project.Trainset;
 import java.util.ArrayList;
 import java.util.List;
 import gui_railway_project.functions.RailwayNetwork;
+import gui_railway_project.functions.TrainSegment;
 
 public class Main {
     public static void main(String[] args) {
@@ -187,7 +188,7 @@ public class Main {
                             System.out.println("Enter the name/code for the connection:");
                             String connectionCode = scanner.nextLine();
                             
-                            Connection conn = new Connection(connectionCode,selectedstartStation,selectedendStation);
+                            Connection conn = new Connection(connectionCode,selectedstartStation,selectedendStation,true);
                             connections.add(conn);
                             System.out.println(connections.get(0).getconnectionCode());
                             
@@ -318,14 +319,14 @@ public class Main {
                             Station stationgdansk = new Station("gdansk",10, 0);
                             Station stationkato = new Station("katowice",5, 5);
 
-                            Connection connectionPW = new Connection("poz-war",stationpoz, stationwar);
-                            Connection connectionWK = new Connection("WK",stationwar, stationkra);
-                            Connection connectionKK = new Connection("KK",stationkra, stationkato);
-                            Connection connectionKP = new Connection("KP",stationkato, stationpoz);
-                            Connection connectionWP = new Connection("WP",stationwar, stationpoz);
-                            Connection connectionKG = new Connection("KG",stationkra, stationgdansk);
-                            Connection connectionWKA = new Connection("WKA",stationwar, stationkato);
-                            Connection connectionGP = new Connection("GP",stationgdansk, stationpoz);
+                            Connection connectionPW = new Connection("poz-war",stationpoz, stationwar,true);
+                            Connection connectionWK = new Connection("WK",stationwar, stationkra,false);
+                            Connection connectionKK = new Connection("KK",stationkra, stationkato,true);
+                            Connection connectionKP = new Connection("KP",stationkato, stationpoz,true);
+                            Connection connectionWP = new Connection("WP",stationwar, stationpoz,true);
+                            Connection connectionKG = new Connection("KG",stationkra, stationgdansk,true);
+                            Connection connectionWKA = new Connection("WKA",stationwar, stationkato,true);
+                            Connection connectionGP = new Connection("GP",stationgdansk, stationpoz,true);
 
                             railwaynetw.addStation(stationpoz);
                             railwaynetw.addStation(stationwar);
@@ -344,7 +345,7 @@ public class Main {
                             
                             segments.add(connectionPW);
                             segments.add(connectionWK);
-                            segments.add(connectionKP); 
+                            segments.add(connectionKP);                            
                             
                             
                             System.out.println("Please enter start station:");
@@ -372,6 +373,15 @@ public class Main {
                                 }
                                 System.out.println(railwaynetw.calculateDistance(route1));
                             }
+                            
+                            
+                            TrainSegment trainSegment = new TrainSegment(trainsets.get(0), segments, railwaynetw);
+                              
+
+                            // Start train segment in a new thread
+                            Thread trainThread = new Thread(trainSegment);
+                            trainThread.start();
+                            
                             
                             break;
                         

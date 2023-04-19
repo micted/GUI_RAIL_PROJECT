@@ -6,6 +6,8 @@ package gui_railway_project;
 
 
 import gui_railway_project.Station;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Connection {
     
@@ -13,11 +15,19 @@ public class Connection {
     private String connectionCode;
     private Station startStation;
     private Station endStation;
+    private boolean hasStation;
+    private Lock lock;
 
-    public Connection(String connectionCode, Station startStation, Station endStation) {
+    public Connection(String connectionCode, Station startStation, Station endStation, boolean hasStation) {
         this.connectionCode = connectionCode;
         this.startStation = startStation;
         this.endStation = endStation;
+        this.hasStation = hasStation;
+        this.lock = new ReentrantLock();
+    }
+    
+    public boolean hasStation() {
+        return hasStation;
     }
     
     public String getconnectionCode() {
@@ -38,6 +48,11 @@ public class Connection {
         double x2 = endStation.getLatitude();
         double y2 = endStation.getLongitude();
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+    
+    // control access to each segment separately and avoid collisions
+    public Lock getLock() {
+        return lock;
     }
 }
 

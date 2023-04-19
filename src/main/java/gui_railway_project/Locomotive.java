@@ -18,7 +18,8 @@ public class Locomotive {
     private String sourceStation;
     private String destinationStation;
     private String id;
-    private double speed;
+    public double speed;
+    public double maxSpeed;
 
     public Locomotive(String name, int maxRailroadCars, int maxWeight, int maxElectricCars, String homeStation, String sourceStation, String destinationStation) {
         
@@ -31,7 +32,8 @@ public class Locomotive {
         this.destinationStation = destinationStation;
         
         this.id = UUID.randomUUID().toString();
-        speed = 10;
+        speed = 50;
+        maxSpeed = 200;
     }
 
     public int getMaxRailroadCars() {

@@ -12,7 +12,7 @@ import java.util.stream.*;
 import java.util.Scanner;
 import gui_railway_project.Locomotive;
 import gui_railway_project.RailroadCars.RailroadCar;
-
+import gui_railway_project.Exception.RailroadHazard;
 
 
 
@@ -25,12 +25,17 @@ public class Trainset {
     //private ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private int maxRailroadCars = 10; // avoid the hardcoding and retrieve the value from locomotive object 
     private int maxWeight = 1000; // avoid the hardcoding and retrieve the value from locomotive object 
+    
     public int id;
+    public double trainSpeed;
+    public double trainMaxSpeed;
 
     public Trainset(Locomotive locomotive) {
         this.locomotive = locomotive;
         railroadCars = new ArrayList<>();
         id = trainID++;
+        trainSpeed = locomotive.speed;
+        trainMaxSpeed = locomotive.maxSpeed;
     }
 
 
@@ -113,6 +118,33 @@ public class Trainset {
     public void setMaxWeight(int maxWeight) {
         this.maxWeight = maxWeight;
     }
+    
+    public double getSpeed() {
+        
+        return trainSpeed;    
+    }
+    
+    public void setSpeed(double speed) {
+        this.trainSpeed = speed;
+    }
+    
+    public void move(Connection seg, double currentSpeed) throws RailroadHazard {
+        
+        if(currentSpeed > 200)
+            throw new RailroadHazard();
+        
+        // Calculate the distance between the start and end nodes using the Euclidean distance formula
+        double distance = seg.getDistance();
+
+        // Calculate the time required to travel the distance at the maximum speed
+        double time = distance / currentSpeed;
+
+        
+        
+        //currentDistanceCovered += distance;
+    }
+    
+    
     
     /*
     public void move(int distance) {

@@ -45,6 +45,7 @@ public class RailwayNetwork {
         }
     }
 
+    // ITERATIVE DFS APPROACH TO DETERMINE ROUTE BETWEEN TWO NODES(STATIONS)
     public List<String> findRoute(String startStation, String endStation) {
         Map<String, String> visited = new HashMap<>();
         Map<String, Double> distances = new HashMap<>();
@@ -108,6 +109,11 @@ public class RailwayNetwork {
             }
         }
         return null;
+    }
+    
+    public int calculateNumStops(List<String> route) {
+        return route.size() - 2;
+        
     }
 
     private String getTrack(String station1, String station2) {
