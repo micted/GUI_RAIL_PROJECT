@@ -87,7 +87,7 @@ public class RailwayNetwork {
         return path;
     }
 
-    private double calculateDistance(List<String> route) {
+    public double calculateDistance(List<String> route) {
         double distance = 0.0;
         for (int i = 0; i < route.size() - 1; i++) {
             String station1 = route.get(i);
@@ -103,7 +103,7 @@ public class RailwayNetwork {
 
     private Connection findConnection(String station1, String station2) {
         for (Connection connection : adjacencyList.get(station1)) {
-            if (connection.getStartStation().equals(station2) || connection.getEndStation().equals(station2)) {
+            if (connection.getStartStation().getName().equals(station2) || connection.getEndStation().getName().equals(station2)) {
                 return connection;
             }
         }

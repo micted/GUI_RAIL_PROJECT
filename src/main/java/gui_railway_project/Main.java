@@ -370,6 +370,7 @@ public class Main {
                                 for (String station : route1) {
                                     System.out.println(station);
                                 }
+                                System.out.println(railwaynetw.calculateDistance(route1));
                             }
                             
                             break;
