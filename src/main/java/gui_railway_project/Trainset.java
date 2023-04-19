@@ -82,6 +82,17 @@ public class Trainset {
         for(RailroadCar railroadCar : railroadCars)
             System.out.println(railroadCar);
     }
+    
+    public String trainsetInfoStr() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(locomotive.getName()).append("\n");
+    sb.append(this.id).append("\n");
+    for (RailroadCar railroadCar : railroadCars) {
+        sb.append(railroadCar.getUniqueNum()).append("\n");
+    }
+    return sb.toString();
+    }
+
 
     public int getNumRailroadCars() {
         return railroadCars.size();

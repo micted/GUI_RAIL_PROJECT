@@ -1,10 +1,11 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
-import gui_railway_project.Stuffx.Material;
+import gui_railway_project.RailroadCars.BasicRailroadFreightCar;
+import gui_railway_project.Stuff.Material;
 import gui_railway_project.Stuff.Stuff;
 
 public class LiquidFreightCar extends BasicRailroadFreightCar{
-    public LiquidFreightCar(double carWeight, double maxCargoWeight) {
+    public LiquidFreightCar(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         this.uniqueNum = "LFC" + uniqueNumGenerator;
     }

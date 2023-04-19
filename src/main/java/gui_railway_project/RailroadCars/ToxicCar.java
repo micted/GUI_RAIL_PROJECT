@@ -1,10 +1,11 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
-import gui_railway_project.Stuffx.Material;
+import gui_railway_project.RailroadCars.HeavyRailroadCar;
+import gui_railway_project.Stuff.Material;
 import gui_railway_project.Stuff.Stuff;
 
-public class ToxicRailroadFreightCar extends HeavyRailroadCar{
-    public ToxicRailroadFreightCar(double carWeight, double maxCargoWeight) {
+public class ToxicCar extends HeavyRailroadCar{
+    public ToxicCar(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         this.uniqueNum = "TFC" + uniqueNumGenerator;
     }

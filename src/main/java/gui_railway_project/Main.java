@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import gui_railway_project.functions.RailwayNetwork;
 import gui_railway_project.functions.TrainSegment;
+import gui_railway_project.functions.AppStateUpdater;
 
 public class Main {
     public static void main(String[] args) {
@@ -45,6 +46,9 @@ public class Main {
         ArrayList<Connection> connections = new ArrayList<>();
         // list of segments for trainsegment thread initialization
         List<Connection> segments = new ArrayList<>();
+        
+        AppStateUpdater appStateUpdater = new AppStateUpdater(trainsets);
+        appStateUpdater.start();
         
         do {
             System.out.println("\nSelect an option:");

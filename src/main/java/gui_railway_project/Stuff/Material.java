@@ -1,4 +1,4 @@
-package gui_railway_project.Stuffx;
+package gui_railway_project.Stuff;
 
 import gui_railway_project.Stuff.Stuff;
 

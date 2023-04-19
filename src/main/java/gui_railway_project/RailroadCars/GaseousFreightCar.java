@@ -1,10 +1,11 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
-import gui_railway_project.Stuffx.Material;
+import gui_railway_project.RailroadCars.BasicRailroadFreightCar;
+import gui_railway_project.Stuff.Material;
 import gui_railway_project.Stuff.Stuff;
 
 public class GaseousFreightCar extends BasicRailroadFreightCar{
-    public GaseousFreightCar(double carWeight, double maxCargoWeight) {
+    public GaseousFreightCar(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         this.uniqueNum = "GFC" + uniqueNumGenerator;
     }

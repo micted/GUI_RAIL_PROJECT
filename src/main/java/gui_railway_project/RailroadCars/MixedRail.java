@@ -1,12 +1,13 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
+import gui_railway_project.RailroadCars.LiquidFreightCar;
 import gui_railway_project.Stuff.Human;
-import gui_railway_project.Stuffx.Material;
+import gui_railway_project.Stuff.Material;
 import gui_railway_project.Stuff.Stuff;
 
 
-public class MixRailroadFreightCar extends LiquidFreightCar {
-    public MixRailroadFreightCar(double carWeight, double maxCargoWeight) {
+public class MixedRail extends LiquidFreightCar {
+    public MixedRail(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         this.uniqueNum = "MFC" + uniqueNumGenerator;
     }

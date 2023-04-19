@@ -1,4 +1,4 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
 import gui_railway_project.RailroadCars.RailroadCar;
 import gui_railway_project.Stuff.Human;
@@ -9,10 +9,10 @@ import java.util.List;
 public class RailroadPostOffice extends RailroadCar{
     //collecting and withdrawal post
 
-    public RailroadPostOffice(double carWeight, double maxCargoWeight) {
+    public RailroadPostOffice(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         requireElectricity = true;
-        this.uniqueNum = "RPO" + uniqueNumGenerator;
+        this.uniqueNum = "Rail Postoffice" + uniqueNumGenerator;
     }
 
 

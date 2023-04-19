@@ -1,13 +1,14 @@
-package gui_railway_project.RailroadCalrs;
+package gui_railway_project.RailroadCars;
 
+import gui_railway_project.RailroadCars.BasicRailroadFreightCar;
 import gui_railway_project.Stuff.Stuff;
-import gui_railway_project.Stuffx.Material;
+import gui_railway_project.Stuff.Material;
 import gui_railway_project.Stuff.Human;
-import gui_railway_project.Stuffx.Mail;
+import gui_railway_project.Stuff.Mail;
 import gui_railway_project.Stuff.Baggage;
 
 public class RefrigeratedRailroadCar extends BasicRailroadFreightCar{
-    public RefrigeratedRailroadCar(double carWeight, double maxCargoWeight) {
+    public RefrigeratedRailroadCar(int carWeight, int maxCargoWeight) {
         super(carWeight, maxCargoWeight);
         requireElectricity = true;
         this.uniqueNum = "RRC" + uniqueNumGenerator;

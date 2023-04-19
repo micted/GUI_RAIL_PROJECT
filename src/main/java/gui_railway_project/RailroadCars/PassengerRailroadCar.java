@@ -29,9 +29,9 @@ public class PassengerRailroadCar extends RailroadCar{
         }else
         {
             if(currentNumberOfPassengers >= seatsCapacity)
-                System.out.println("No more empty place in this car");
+                System.out.println("NO VACANT");
             else if(maxCargoWeight < currentCargoWeight + stuff.getWeight())
-                System.out.println("The car is too heavy");
+                System.out.println("HEAVY");
         }
     }
 
