@@ -44,6 +44,7 @@ public class TrainSegment implements Runnable {
         this.currentSpeed = trainset.getSpeed();
         this.currentDistanceCovered = 0;
         this.totalDistanceCovered = 0;
+        
     }
 
     public void run() {
@@ -105,7 +106,14 @@ public class TrainSegment implements Runnable {
                     currentSegmentIndex++;
                 } else {
                     isRunning = false; // Train has arrived at the destination
-                    System.out.println("Desitnation arrived! Number of stops were"+numStops);
+                    System.out.println("Desitnation arrived! Number of stops were"+" "+numStops);
+                    List<String> newRoute = railwayNetwork.findRoute(currentSegment.getEndStation().getName(),railwayNetwork.getRandomAdjacentStation(currentSegment.getEndStation()));
+                    TrainReturn returnHandler = new TrainReturn(trainset, segments, currentSegment, railwayNetwork);
+                    Thread returnThread = new Thread(returnHandler);
+                    returnThread.start();
+                    System.out.println("waiting 30 sec");
+                    System.out.println("returning back");
+                    
                 }
 
                 // Release lock for current segment

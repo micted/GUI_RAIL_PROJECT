@@ -31,6 +31,15 @@ public class RailwayNetwork {
             adjacencyList.put(station.getName(), new ArrayList<>());
         }
     }
+    
+    public String getRandomAdjacentStation(Station station) {
+        List<Connection> adjacentStations = adjacencyList.get(station.getName());
+        int randomIndex = new Random().nextInt(adjacentStations.size());
+        Connection randomStationName = adjacentStations.get(randomIndex);
+        return randomStationName.getEndStation().getName();
+    }
+
+
 
     public void addConnection(Connection connection) {
         Station station1 = connection.getStartStation();

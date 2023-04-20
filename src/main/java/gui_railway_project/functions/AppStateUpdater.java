@@ -33,14 +33,9 @@ public class AppStateUpdater extends Thread {
             try {
                 // Sleep for 5 seconds
                 Thread.sleep(5000);
-
-                // Sort trainsets based on route length and railroad cars based on weight
-                /*
-                Collections.sort(trainsets, new TrainsetComparator());
-                for (Trainset trainset : trainsets) {
-                    Collections.sort(trainset.getRailroadCars(), new RailroadCarComparator());
-                }
-                */
+                
+                // this sorts the trainsets list according to custom defined trainset comparator class
+                Collections.sort(trainsets, new TrainsetComparator());               
 
                 // Write trainset information to AppState.txt file
                 FileWriter fileWriter = new FileWriter("C:\\Users\\Hp\\Documents\\PJAIT documents\\GUI\\GUI_Railway_Project\\src\\main\\java\\gui_railway_project\\AppState.txt");

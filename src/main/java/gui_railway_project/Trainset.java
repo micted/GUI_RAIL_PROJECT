@@ -24,18 +24,24 @@ public class Trainset {
     private List<RailroadCar> railroadCars;
     //private ArrayList<RailroadCar> railroadCars = new ArrayList<>();
     private int maxRailroadCars = 10; // avoid the hardcoding and retrieve the value from locomotive object 
-    private int maxWeight = 1000; // avoid the hardcoding and retrieve the value from locomotive object 
+    private int maxWeight = 1000; // avoid the hardcoding and retrieve the value from locomotive object
+    public double routeDist = 0;
     
     public int id;
     public double trainSpeed;
     public double trainMaxSpeed;
-
+    
+    
+    // default constructor incase user doesn't pass routeDist or not determine at the moment of trainset creation
+   
+    
     public Trainset(Locomotive locomotive) {
         this.locomotive = locomotive;
         railroadCars = new ArrayList<>();
         id = trainID++;
         trainSpeed = locomotive.speed;
         trainMaxSpeed = locomotive.maxSpeed;
+        
     }
 
 
@@ -84,14 +90,17 @@ public class Trainset {
     }
     
     public String trainsetInfoStr() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(locomotive.getName()).append("\n");
-    sb.append(this.id).append("\n");
-    for (RailroadCar railroadCar : railroadCars) {
-        sb.append(railroadCar.getUniqueNum()).append("\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name"+" "+ locomotive.getName()).append("|");
+        sb.append("TrainID"+" "+ this.id).append("|");
+        sb.append("RouteLength"+" "+ this.getRouteDistance()).append("|");
+        sb.append("CurrentSpeed"+" "+ this.getSpeed()).append("|");
+        for (RailroadCar railroadCar : railroadCars) {
+            sb.append("Car-ID"+" "+railroadCar.getUniqueNum()).append("|");
+        }
+        return sb.toString();
     }
-    return sb.toString();
-    }
+
 
 
     public int getNumRailroadCars() {
@@ -153,6 +162,14 @@ public class Trainset {
         
         
         //currentDistanceCovered += distance;
+    }
+    
+    public void setRouteDistance(double routeDist) {
+        this.routeDist = routeDist;
+    }
+    
+    public double getRouteDistance() {
+        return routeDist;
     }
     
     

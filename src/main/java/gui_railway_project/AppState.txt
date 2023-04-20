@@ -1,6 +1,1 @@
-locoman
-1
-
-locman
-2
-
+Name loco|TrainID 1|RouteLength 14.142135623730951|CurrentSpeed 77.52590289245|

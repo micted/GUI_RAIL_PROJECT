@@ -380,7 +380,7 @@ public class Main {
                             
                             
                             TrainSegment trainSegment = new TrainSegment(trainsets.get(0), segments, railwaynetw,railwaynetw.calculateDistance(route1));
-                              
+                            trainsets.get(0).setRouteDistance(railwaynetw.calculateDistance(route1));
 
                             // Start train segment in a new thread
                             Thread trainThread = new Thread(trainSegment);
