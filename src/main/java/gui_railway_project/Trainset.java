@@ -13,7 +13,7 @@ import java.util.Scanner;
 import gui_railway_project.Locomotive;
 import gui_railway_project.RailroadCars.RailroadCar;
 import gui_railway_project.Exception.RailroadHazard;
-
+import gui_railway_project.Exception.CapacityError;
 
 
 public class Trainset {
@@ -23,8 +23,8 @@ public class Trainset {
     private Locomotive locomotive;
     private List<RailroadCar> railroadCars;
     //private ArrayList<RailroadCar> railroadCars = new ArrayList<>();
-    private int maxRailroadCars = 10; // avoid the hardcoding and retrieve the value from locomotive object 
-    private int maxWeight = 1000; // avoid the hardcoding and retrieve the value from locomotive object
+    private int maxRailroadCars; // avoid the hardcoding and retrieve the value from locomotive object 
+    private int maxWeight; // avoid the hardcoding and retrieve the value from locomotive object
     public double routeDist = 0;
     
     public int id;
@@ -41,18 +41,21 @@ public class Trainset {
         id = trainID++;
         trainSpeed = locomotive.speed;
         trainMaxSpeed = locomotive.maxSpeed;
+        this.maxRailroadCars = locomotive.getMaxRailroadCars();
+        this.maxWeight = locomotive.getMaxWeight();
+        
         
     }
 
 
-    public void addCar(RailroadCar rc)
+    public void addCar(RailroadCar rc) throws CapacityError
     {
 
        if (railroadCars.size() >= locomotive.getMaxRailroadCars()) {
-            throw new RuntimeException("Cannot add more railroad cars. Maximum number of cars reached.");
+            throw new CapacityError();
         }
         if (railroadCars.stream().mapToInt(RailroadCar::getCarWeight).sum() + rc.getCarWeight() > locomotive.getMaxWeight()) {
-            throw new RuntimeException("Cannot add more weight to the train. Maximum weight reached.");
+            throw new CapacityError();
         }
         // If the conditions are met, add the new railroad car to the array.
         railroadCars.add(rc);

@@ -17,7 +17,7 @@ public class LiquidFreightCar extends BasicRailroadFreightCar{
             currentCargoWeight += stuff.getWeight();
         }
         else
-            System.out.println(((Material) stuff).getMaterial() + "cannot be stored there");
+            System.out.println(((Material) stuff).getMaterial() + "cannot be stored");
     }
 
 }

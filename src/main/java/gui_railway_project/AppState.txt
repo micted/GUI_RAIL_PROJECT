@@ -1,1 +1,25 @@
-Name loco|TrainID 1|RouteLength 14.142135623730951|CurrentSpeed 77.52590289245|
+Name Locomotive 1|TrainID 1|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID LFC8|Car-ID PRC2|Car-ID LFC8|Car-ID GFC4|Car-ID MFC6|Car-ID TFC5|
+Name Locomotive 2|TrainID 2|RouteLength 0.0|CurrentSpeed 50.0|Car-ID PRC2|Car-ID PRC2|Car-ID MFC6|Car-ID LFC8|Car-ID MFC6|Car-ID LFC8|
+Name Locomotive 3|TrainID 3|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID RRC-1|Car-ID PRC2|Car-ID RRC-1|Car-ID LFC8|Car-ID LFC8|Car-ID MFC6|Car-ID RRC-1|Car-ID TFC5|
+Name Locomotive 4|TrainID 4|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID PRC2|Car-ID PRC2|Car-ID MFC6|Car-ID RRC-1|Car-ID GFC4|Car-ID GFC4|
+Name Locomotive 5|TrainID 5|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID PRC2|Car-ID RRC-1|Car-ID GFC4|Car-ID RRC-1|Car-ID PRC2|Car-ID PRC2|Car-ID GFC4|
+Name Locomotive 6|TrainID 6|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID EFC3|Car-ID GFC4|Car-ID RRC-1|Car-ID MFC6|
+Name Locomotive 7|TrainID 7|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID PRC2|Car-ID LFC8|Car-ID PRC2|Car-ID TFC5|
+Name Locomotive 8|TrainID 8|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID RRC-1|Car-ID GFC4|Car-ID GFC4|Car-ID PRC2|Car-ID TFC5|
+Name Locomotive 9|TrainID 9|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID LFC8|Car-ID LFC8|Car-ID PRC2|Car-ID PRC2|Car-ID RRC-1|Car-ID PRC2|Car-ID GFC4|
+Name Locomotive 10|TrainID 10|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID MFC6|Car-ID RRC-1|Car-ID TFC5|Car-ID TFC5|
+Name Locomotive 11|TrainID 11|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID LFC8|Car-ID GFC4|Car-ID LFC8|Car-ID TFC5|Car-ID TFC5|Car-ID TFC5|
+Name Locomotive 12|TrainID 12|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID GFC4|Car-ID RRC-1|Car-ID MFC6|Car-ID TFC5|Car-ID TFC5|
+Name Locomotive 13|TrainID 13|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID RRC-1|Car-ID RRC-1|Car-ID RRC-1|Car-ID TFC5|
+Name Locomotive 14|TrainID 14|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID RRC-1|Car-ID GFC4|Car-ID LFC8|Car-ID TFC5|
+Name Locomotive 15|TrainID 15|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID LFC8|Car-ID LFC8|Car-ID LFC8|Car-ID RRC-1|Car-ID PRC2|
+Name Locomotive 16|TrainID 16|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID RRC-1|Car-ID RRC-1|Car-ID PRC2|Car-ID GFC4|
+Name Locomotive 17|TrainID 17|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID LFC8|Car-ID RRC-1|Car-ID RRC-1|Car-ID PRC2|
+Name Locomotive 18|TrainID 18|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID MFC6|Car-ID MFC6|Car-ID GFC4|Car-ID MFC6|Car-ID MFC6|Car-ID TFC5|
+Name Locomotive 19|TrainID 19|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID EFC3|Car-ID MFC6|Car-ID MFC6|Car-ID GFC4|Car-ID MFC6|Car-ID RRC-1|Car-ID LFC8|Car-ID MFC6|
+Name Locomotive 20|TrainID 20|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID RRC-1|Car-ID LFC8|Car-ID LFC8|Car-ID GFC4|Car-ID TFC5|Car-ID TFC5|
+Name Locomotive 21|TrainID 21|RouteLength 0.0|CurrentSpeed 50.0|Car-ID EFC3|Car-ID EFC3|Car-ID GFC4|Car-ID RRC-1|Car-ID PRC2|Car-ID PRC2|Car-ID GFC4|Car-ID PRC2|
+Name Locomotive 22|TrainID 22|RouteLength 0.0|CurrentSpeed 50.0|Car-ID PRC2|Car-ID LFC8|Car-ID MFC6|Car-ID PRC2|Car-ID TFC5|
+Name Locomotive 23|TrainID 23|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID LFC8|Car-ID RRC-1|Car-ID TFC5|Car-ID TFC5|Car-ID TFC5|
+Name Locomotive 24|TrainID 24|RouteLength 0.0|CurrentSpeed 50.0|Car-ID Rail Postoffice9|Car-ID EFC3|Car-ID EFC3|Car-ID EFC3|Car-ID MFC6|Car-ID GFC4|Car-ID LFC8|Car-ID RRC-1|Car-ID PRC2|
+Name Locomotive 25|TrainID 25|RouteLength 0.0|CurrentSpeed 50.0|Car-ID MFC6|Car-ID LFC8|Car-ID MFC6|Car-ID MFC6|Car-ID MFC6|Car-ID RRC-1|Car-ID MFC6|
