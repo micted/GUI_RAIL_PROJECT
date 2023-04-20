@@ -1,6 +1,7 @@
 package gui_railway_project;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.Random;
 
@@ -22,8 +23,13 @@ public class Presentation {
         // Create an ArrayList to store the stations
         ArrayList<Station> stations = new ArrayList<>();
         ArrayList<RailroadCar> railroadcars = new ArrayList<>();
-         ArrayList<Trainset> trainsets = new ArrayList<>();
-         ArrayList<Locomotive> locomotives = new ArrayList<>();
+        ArrayList<Trainset> trainsets = new ArrayList<>();
+        ArrayList<Locomotive> locomotives = new ArrayList<>();
+        List<Connection> segments = new ArrayList<>();
+        
+        RailwayNetwork railnet = new RailwayNetwork();
+        
+         
          
          AppStateUpdater appStateUpdater = new AppStateUpdater(trainsets);
          appStateUpdater.start();
@@ -35,6 +41,7 @@ public class Presentation {
             double longitude = Math.random() * (33.13 - (-22.96)) + (-22.96); // Europe's longitude range
             Station station = new Station(stationName, latitude, longitude);
             stations.add(station);
+            railnet.addStation(station);
         }
         
         // Shuffle the stations randomly
@@ -48,6 +55,7 @@ public class Presentation {
             String connectionCode = "Connection " + (i + 1);
             Connection connection = new Connection(connectionCode, startStation, endStation, true);
             connections.add(connection);
+            railnet.addConnection(connection);
         }
 
         // Add the last connection to complete the loop
@@ -89,7 +97,7 @@ public class Presentation {
         RailroadPostOffice postOffice = new RailroadPostOffice(500, 1000);
 
 
-        // add the restaurant car to the list of railroad cars
+        // add different cars to the list of railroad cars then later we can randomly pick car types from the list
         railroadcars.add(restaurantCar);
         railroadcars.add(passengerCar);
         railroadcars.add(explosivesCar);
@@ -136,7 +144,54 @@ public class Presentation {
             trainsets.add(trainset);
             locomotives.add(locomotive);
 
-        }      
+        }  
+        
+        
+        // DETERMINE ROUTE PATH AND SEGMENT
+                                
+                                String departureStation = "Station 19";
+                                if (!railnet.hasStation(departureStation)) {
+                                    System.out.println("Start station does not exist in network.");
+                                    
+                                }
+                                
+                                
+                                String destinationStation = "Station 13";
+                                if (!railnet.hasStation(destinationStation)) {
+                                    System.out.println("End station does not exist in network.");
+                                    
+                                }
+                                
+                                // Find route and display to user
+                                List<String> route = railnet.findRoute(departureStation, destinationStation);
+                                
+                                
+                                for (int i = 0; i < route.size() - 1; i++) {
+                                    String startSeg = route.get(i);
+                                    String endSeg = route.get(i + 1);
+                                    //connection in each segment
+                                    Connection segconn = railnet.findConnection(startSeg, endSeg);
+                                    segments.add(segconn);
+                                }
+                                if (route == null) {
+                                    System.out.println("No route found.");
+                                } else {
+                                    System.out.println("Route:");
+                                    for (String station : route) {
+                                        System.out.println(station);
+                                    }
+                                    System.out.println(railnet.calculateDistance(route));
+                                }
+                                
+                                
+                                // MOVEMENT AND 
+                                TrainSegment trainSegment = new TrainSegment(trainsets.get(0), segments, railnet,railnet.calculateDistance(route));
+                                trainsets.get(0).setRouteDistance(railnet.calculateDistance(route));
+                                
+                                // Start train segment in a new thread
+                                Thread trainThread = new Thread(trainSegment);
+                                trainThread.start();
+        
         
     }
 }

@@ -111,7 +111,7 @@ public class RailwayNetwork {
 }
 
 
-    private Connection findConnection(String station1, String station2) {
+    public Connection findConnection(String station1, String station2) {
         for (Connection connection : adjacencyList.get(station1)) {
             if (connection.getStartStation().getName().equals(station2) || connection.getEndStation().getName().equals(station2)) {
                 return connection;
